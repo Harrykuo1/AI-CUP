@@ -12,6 +12,7 @@ pip install torch==2.5.1+cu124 torchvision==0.20.1+cu124 --index-url https://dow
 ## 專案結構
 專案結構如下，請將data放置於以下正確位置
 
+```
 project/
 ├── README.md                    # 本文件
 ├── enviroment.yaml             # Conda環境配置
@@ -33,6 +34,7 @@ project/
 ├── log/                      # 訓練日誌與圖表
 ├── result/                   # 實驗結果
 └── pseudo/                   # 偽標籤資料
+```
 
 ## 檔案說明
 
