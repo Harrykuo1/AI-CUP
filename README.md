@@ -9,6 +9,31 @@ conda activate AICUP
 pip install torch==2.5.1+cu124 torchvision==0.20.1+cu124 --index-url https://download.pytorch.org/whl/cu124
 ```
 
+## 專案結構
+專案結構如下，請將data放置於以下正確位置
+
+project/
+├── README.md                    # 本文件
+├── enviroment.yaml             # Conda環境配置
+├── 3090.yaml                   # 訓練配置檔
+├── dataloader.py              # 資料載入與預處理
+├── model_large.py             # 模型架構定義
+├── train.py                   # 訓練主程式
+├── test_top.py                # 測試與推論
+├── gen_pseudo.py              # 偽標籤生成
+├── plotter.py                 # 視覺化工具
+├── data/                      # 資料目錄
+│   ├── train/
+│   │   ├── train_info.csv
+│   │   └── train_sensors/
+│   └── test/
+│       ├── test_info.csv
+│       └── test_sensors/
+├── weight/                    # 模型權重存放
+├── log/                      # 訓練日誌與圖表
+├── result/                   # 實驗結果
+└── pseudo/                   # 偽標籤資料
+
 ## 檔案說明
 
 | 檔案名稱 | 功能說明 |
