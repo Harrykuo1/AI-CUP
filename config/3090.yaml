@@ -1,0 +1,63 @@
+# ── 資料／路徑設定 ─────────────────────────
+train_info:     ./data/train/train_info.csv
+test_info:      ./data/test/test_info.csv
+train_sensors:  ./data/train/train_sensors
+test_sensors:   ./data/test/test_sensors
+weight_dir:     weight
+use_extra_feat: true
+
+# ── Fold/Seed/Batch ─────────────────────────
+folds: 5
+seed: 42
+seed_list: [42, 123, 777, 999, 2025]
+batch_size: 128
+num_workers: 16
+
+# ── 模型／優化器 ───────────────────────────
+lr: 2.0e-4
+weight_decay: 5.0e-5
+hidden_dim: 256
+
+# ── 訓練時程─Early‐stop──────────────────────
+epochs: 100
+patience: 25
+
+model:
+  backbone_dropout: 0.15
+  attn_dropout: 0.15
+  head_dropout: 0.25
+
+pseudo:
+  pseudo_dir:     pseudo/
+  pseudo_prefix:  submission
+  thresh:
+    bin_hi:       0.97
+    bin_lo:       0.03
+    multi:        0.97
+  ratio:          1.0
+
+training:
+  linear_reg: false
+  
+  pseudo_start_epoch: 15000
+  pseudo_weight_hi:   0.8
+  pseudo_weight_lo:   0.4
+
+  # 優化功能開關
+  use_mixup:    true
+  mixup_alpha:  0.1
+
+  # OneCycleLR 排程器參數
+  scheduler:
+    max_lr_factor:    1.0       # peak_lr = base_lr * max_lr_factor
+    pct_start:        0.1       # warm-up 佔 total_steps 的比例
+    anneal_strategy:  cos       # “cos” or “linear”
+    three_phase:      false
+    div_factor:       25.0      # 初始 lr = peak_lr/div_factor
+    final_div_factor: 5000.0   # 結束 lr = peak_lr/final_div_factor
+
+  task_weights:
+    gender:     1.15
+    hand:       0.15
+    play_years: 1.7
+    level:      1.6
