@@ -16,7 +16,8 @@ pip install torch==2.5.1+cu124 torchvision==0.20.1+cu124 --index-url https://dow
 project/
 ├── README.md                    # 本文件
 ├── enviroment.yaml             # Conda環境配置
-├── 3090.yaml                   # 訓練配置檔
+├── config/
+│   └── config.yaml            # 訓練配置檔
 ├── dataloader.py              # 資料載入與預處理
 ├── model_large.py             # 模型架構定義
 ├── train.py                   # 訓練主程式
